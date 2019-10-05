@@ -5,10 +5,10 @@ export default class Balance extends Component {
     return (
       <div style={balance} className="container-fluid text-center mx-auto">
         <div className="row">
-          <div className="col-md-3 mx-auto">
+          <div className="col-md-4 mx-auto">
             <div className="card" style={card}>
               <h3 className="card-title">Balance Left</h3>
-              <h1 className="display-4">{this.props.total}</h1>
+              <h1 className="display-4">{Number(this.props.total).toFixed(2)}</h1>
             </div>
           </div>
         </div>
