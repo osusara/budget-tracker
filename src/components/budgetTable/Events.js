@@ -14,7 +14,7 @@ class Events extends Component {
                   <th>Date | Time</th>
                   <th>Event</th>
                   <th>Amount</th>
-                  <th>+/-</th>
+                  <th></th>
                   <th></th>
                 </tr>
                 {this.props.events.map(event => (

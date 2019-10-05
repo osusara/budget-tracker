@@ -14,7 +14,7 @@ class EventItem extends Component {
           <tr>
             <td>{dateTime}</td>
             <td>{title}</td>
-            <td>{amount}</td>
+            <td>{Number(amount).toFixed(2)}</td>
             <td>{income? <img src={up} alt="+" /> : <img src={down} alt="-" />}</td>
             <td><button className="btn btn-sm btn-danger" onClick={this.props.removeEvent.bind(this, id)}>Remove</button></td>
           </tr>
