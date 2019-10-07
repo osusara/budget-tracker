@@ -7,11 +7,13 @@ import Header from "./components/layout/Header";
 import Events from './components/budgetTable/Events'
 import AddEvent from "./components/budgetTable/AddEvent"
 import Balance from "./components/layout/Balance"
+import Loading from './components/layout/Loading'
 
 class App extends Component {
   state = {
     events: [],
-    total: 0
+    total: 0,
+    isLoading: false
   };
 
   componentDidMount() {
@@ -19,12 +21,13 @@ class App extends Component {
   }
 
   getData = () => {
+    this.setState({ isLoading: true })
     db.collection("events").orderBy('dateTime', 'desc')
       .get()
       .then(querySnapshot => {
         const data = querySnapshot.docs.map(doc => doc.data());
         this.setState({
-          events: data
+          events: data,
         });
 
         this.getTotal();
@@ -45,7 +48,7 @@ class App extends Component {
     });
 
     //console.log(total)
-    this.setState({ total: total });
+    this.setState({ total: total, isLoading: false });
   };
     
   addEvent = (dateTime, title, amount, income) => {
@@ -114,8 +117,12 @@ class App extends Component {
       <div>
         <Header />
         <AddEvent addEvent={this.addEvent} subEvent={this.subEvent} />
-        <Balance total={this.state.total} />
-        <Events events={this.state.events} removeEvent={this.removeEvent} />
+        
+        { this.state.isLoading ? <Loading /> : <div>
+            <Balance total={this.state.total} />
+            <Events events={this.state.events} removeEvent={this.removeEvent} /> 
+          </div>
+        }
       </div>
     );
   }
