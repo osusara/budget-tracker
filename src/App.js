@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { db } from "./firebase";
+import firebaseApp from "./firebase";
 import uuid from 'uuid';
 import "./App.css";
 
@@ -10,24 +10,42 @@ import Balance from "./components/layout/Balance"
 import Loading from './components/layout/Loading'
 
 class App extends Component {
+
   state = {
+    userid: this.props.userid,
     events: [],
     total: 0,
     isLoading: false
   };
 
   componentDidMount() {
+    // this.getUserId();
     this.getData();
   }
 
+  db = firebaseApp.firestore();
+
+  // getUserId = firebaseApp.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     // console.log(user.uid)
+  //     this.setState({ userid: user.uid }) 
+  //   } else {
+  //     console.log("userid error")
+  //     // User is signed out.
+  //   }
+  // });
+
   getData = () => {
-    this.setState({ isLoading: true })
-    db.collection("events").orderBy('dateTime', 'desc')
+    this.setState({ isLoading: true });
+    // console.log(this.state.userid);
+    this.db
+      .collection("users").doc(this.state.userid).collection("events")
+      .orderBy("dateTime", "desc")
       .get()
       .then(querySnapshot => {
         const data = querySnapshot.docs.map(doc => doc.data());
         this.setState({
-          events: data,
+          events: data
         });
 
         this.getTotal();
@@ -50,9 +68,10 @@ class App extends Component {
     //console.log(total)
     this.setState({ total: total, isLoading: false });
   };
-    
+
   addEvent = (dateTime, title, amount, income) => {
-    db.collection("events")
+    this.db
+      .collection("users").doc(this.state.userid).collection("events")
       .add({
         id: uuid.v4(),
         dateTime,
@@ -71,7 +90,8 @@ class App extends Component {
   };
 
   subEvent = (dateTime, title, amount, income) => {
-    db.collection("events")
+    this.db
+      .collection("users").doc(this.state.userid).collection("events")
       .add({
         id: uuid.v4(),
         dateTime,
@@ -89,12 +109,14 @@ class App extends Component {
   };
 
   removeEvent = id => {
-    db.collection("events")
+    this.db
+      .collection("users").doc(this.state.userid).collection("events")
       .where("id", "==", id)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          db.collection("events")
+          this.db
+            .collection("users").doc(this.state.userid).collection("events")
             .doc(`${doc.id}`)
             .delete()
             .then(function() {
@@ -117,12 +139,15 @@ class App extends Component {
       <div>
         <Header />
         <AddEvent addEvent={this.addEvent} subEvent={this.subEvent} />
-        
-        { this.state.isLoading ? <Loading /> : <div>
+
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <div>
             <Balance total={this.state.total} />
-            <Events events={this.state.events} removeEvent={this.removeEvent} /> 
+            <Events events={this.state.events} removeEvent={this.removeEvent} />
           </div>
-        }
+        )}
       </div>
     );
   }
