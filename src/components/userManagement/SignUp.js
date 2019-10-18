@@ -1,40 +1,107 @@
-import React, { useCallback } from "react";
-import { withRouter } from "react-router";
+import React, { Component } from "react";
 import firebaseApp from "../../firebase";
 
-const SignUp = ({ history }) => {
-  const handleSignUp = useCallback(
-    async event => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
-      try {
-        await firebaseApp
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
+import Error from "../warnings/Error";
 
-  return (
-    <div>
-      <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  );
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.login = this.login.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.signup = this.signup.bind(this);
+
+    this.state = {
+      email: "",
+      password: "",
+      errors: "",
+      // isSignUp: false
+    };
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  login(e) {
+    e.preventDefault();
+    // this.setState({ isSignUp: true });
+    this.props.isSignUp(true);
+  }
+
+  signup(e) {
+    e.preventDefault();
+    firebaseApp
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(u => {
+        console.log(u);
+      })
+      .catch(error => {
+        // console.log(error);
+        this.setState({ errors: error.message });
+      });
+  }
+
+  render() {
+    return (
+      <div className="container py-5 my-5">
+        <div className="col-md-6 col-sm-10 col-xs-11 mx-auto my-5 py-5 text-center">
+          <div className="card py-3 px-2" style={loginCard}>
+            <h2 className="card-title">Signup</h2>
+            <div className="card-body">
+              {this.state.errors ? <Error message={this.state.errors} /> : null}
+              <form>
+                <div className="form-group">
+                  <input
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    type="email"
+                    name="email"
+                    className="form-control text-center"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Email"
+                  />
+                  <small id="emailHelp" className="form-text">
+                    We'll never share your email with anyone else.
+                  </small>
+                </div>
+                <div className="form-group">
+                  <input
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    type="password"
+                    name="password"
+                    className="form-control text-center"
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  onClick={this.login}
+                  className="btn btn-primary"
+                >
+                  Login
+                </button>
+                <label className="text-center px-2">or</label>
+                <button onClick={this.signup} className="btn btn-secondary">
+                  Signup
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+const loginCard = {
+  backgroundColor: "#DDD",
+  color: "#444",
+  border: "none"
 };
 
-export default withRouter(SignUp);
+export default SignUp

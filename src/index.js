@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import Login from "./components/userManagement/Login";
+import SignUp from "./components/userManagement/SignUp"
 import Loading from "./components/layout/Loading"
 import firebaseApp from "./firebase";
 
@@ -12,7 +13,8 @@ class Root extends Component{
     super();
     this.state = {
       user: null,
-      isLoading: false
+      isLoading: false,
+      isSignUp: true
     };
 
     this.authListener = this.authListener.bind(this);
@@ -39,12 +41,26 @@ class Root extends Component{
     this.setState({ isLoading: false });
   }
 
+  isSignUp = (status) => {
+    this.setState({ isSignUp: status })
+  }
+
   render() {
     return (
       <div>
-        {this.state.isLoading? <Loading /> : <div>
-          {this.state.user ? <App userid={this.state.user.uid} /> : <Login />}
-        </div>}
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <div>
+            {this.state.user ? (
+              <App userid={this.state.user.uid} />
+            ) : this.state.isSignUp ? (
+              <Login isSignUp={this.isSignUp} />
+            ) : (
+              <SignUp isSignUp={this.isSignUp} />
+            )}
+          </div>
+        )}
       </div>
     );
   }

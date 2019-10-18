@@ -16,7 +16,7 @@ class EventItem extends Component {
         </td>
         <td>
           <button
-            className="btn btn-sm btn-danger"
+            className="btn btn-sm btn-dark"
             onClick={this.props.removeEvent.bind(this, id)}
           >
             Remove
