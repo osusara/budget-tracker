@@ -13,6 +13,7 @@ class App extends Component {
 
   state = {
     userid: this.props.userid,
+    userData: "",
     events: [],
     total: 0,
     isLoading: false
@@ -24,16 +25,6 @@ class App extends Component {
   }
 
   db = firebaseApp.firestore();
-
-  // getUserId = firebaseApp.auth().onAuthStateChanged((user) => {
-  //   if (user) {
-  //     // console.log(user.uid)
-  //     this.setState({ userid: user.uid }) 
-  //   } else {
-  //     console.log("userid error")
-  //     // User is signed out.
-  //   }
-  // });
 
   getData = () => {
     this.setState({ isLoading: true });
@@ -48,9 +39,25 @@ class App extends Component {
           events: data
         });
 
+        this.getUserData();
         this.getTotal();
+        
       });
   };
+
+  getUserData = () => {
+    this.db
+      .collection("users").doc(this.state.userid)
+      .get()
+      .then(doc => {
+        if(doc.exists){
+          this.setState({ userData: doc.data().name })
+        }else{
+          console.log("Empty Doc")
+        }
+      });
+
+  }
 
   getTotal = () => {
     this.setState({ total: 0 });
@@ -120,7 +127,7 @@ class App extends Component {
             .doc(`${doc.id}`)
             .delete()
             .then(function() {
-              console.log("Document successfully deleted!");
+              // console.log("Document successfully deleted!");
             })
             .catch(function(error) {
               console.error("Error removing document: ", error);
@@ -137,7 +144,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header userData={this.state.userData} />
         <AddEvent addEvent={this.addEvent} subEvent={this.subEvent} />
 
         {this.state.isLoading ? (

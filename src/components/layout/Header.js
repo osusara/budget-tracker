@@ -17,16 +17,15 @@ class Header extends Component {
     return (
       <div style={header}>
         <div className="row">
-          <div className="col-md-11 col-sm-8 col-xs-6">
+          <div className="col-md-4 col-sm-6 col-xs-6">
             <h1 style={headerText}>Budget Tracker</h1>
           </div>
-          <div className="col-md-1 col-sm-4 col-xs-6 py-2">
-            <button
-              onClick={this.logout}
-              className="btn btn-secondary"
-            >
-              Logout
-            </button>
+          <div className="col-md-8 col-sm-6 col-xs-6 py-2">
+            <h4 className="text-right">
+              Hi! {this.props.userData}{" "} <button onClick={this.logout} className="btn btn-secondary" style={button}>
+                Logout
+              </button>
+            </h4>
           </div>
         </div>
       </div>
@@ -35,13 +34,19 @@ class Header extends Component {
 }
 
 const header = {
-  background: "#333",
+  backgroundImage: "linear-gradient(to right, #323232 0%, #111 100%)",
   color: "#FFF",
-  padding: "10px"
+  padding: "10px",
 };
 
 const headerText = {
   margin: "0 0 0 10px"
+};
+
+const button = {
+  backgroundImage: "linear-gradient(to right, #545454 0%, #333 100%)",
+  border: "none",
+  borderRadius: "100px"
 };
 
 export default Header;

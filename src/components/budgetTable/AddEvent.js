@@ -68,6 +68,7 @@ class AddEvent extends Component {
                       placeholder="Add a new event"
                       value={this.state.title}
                       onChange={this.onChange}
+                      style={input}
                     />
                   </div>
                   <div className="col-md-4">
@@ -78,6 +79,7 @@ class AddEvent extends Component {
                       placeholder="Add amount"
                       value={this.state.amount}
                       onChange={this.onChange}
+                      style={input}
                     />
                   </div>
                   <div className="col-md-1">
@@ -99,12 +101,19 @@ class AddEvent extends Component {
 }
 
 const btn = {
-    width: '100%',
+  width: "100%",
+  border: "none",
+  borderRadius: "100px"
+};
+
+const input = {
+  border: "none",
+  borderRadius: "100px",
 }
 
 const addEvent = {
-    background: '#555',
-    padding: '20px',
-}
+  backgroundImage: "linear-gradient(to right, #434343 0%, #222 100%)",
+  padding: "20px"
+};
 
 export default AddEvent

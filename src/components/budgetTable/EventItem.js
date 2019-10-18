@@ -17,6 +17,7 @@ class EventItem extends Component {
         <td>
           <button
             className="btn btn-sm btn-dark"
+            style={btn}
             onClick={this.props.removeEvent.bind(this, id)}
           >
             Remove
@@ -26,5 +27,12 @@ class EventItem extends Component {
     );
   }
 }
+
+const btn = {
+  border: "none",
+  borderRadius: "100px",
+  backgroundImage: "linear-gradient(to right, #545454 0%, #444 100%)",
+  width: "60%"
+};
 
 export default EventItem;
