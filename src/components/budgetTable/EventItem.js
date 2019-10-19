@@ -14,13 +14,13 @@ class EventItem extends Component {
         <td>
           {income ? <img src={up} alt="+" /> : <img src={down} alt="-" />}
         </td>
-        <td>
+        <td className="text-center">
           <button
             className="btn btn-sm btn-dark"
             style={btn}
             onClick={this.props.removeEvent.bind(this, id)}
           >
-            Remove
+            Clear
           </button>
         </td>
       </tr>
@@ -32,7 +32,7 @@ const btn = {
   border: "none",
   borderRadius: "100px",
   backgroundImage: "linear-gradient(to right, #545454 0%, #444 100%)",
-  width: "60%"
+  width: "50%",
 };
 
 export default EventItem;

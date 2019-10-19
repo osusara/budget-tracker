@@ -141,6 +141,30 @@ class App extends Component {
       });
   };
 
+  clearAll = () => {
+    this.db.collection("users").doc(this.state.userid).collection("events")
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        // console.log(doc)
+
+        this.db.collection("users").doc(this.state.userid).collection("events").doc(doc.id)
+        .delete()
+        .then(
+          // console.log("Event Deleted")
+        )
+        .catch(error => {
+          console.log(error)
+        })
+
+        this.getData();
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -152,7 +176,7 @@ class App extends Component {
         ) : (
           <div>
             <Balance total={this.state.total} />
-            <Events events={this.state.events} removeEvent={this.removeEvent} />
+            <Events events={this.state.events} removeEvent={this.removeEvent} clearAll={this.clearAll} />
           </div>
         )}
       </div>
