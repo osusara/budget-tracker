@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyD14W3gHhN5-x9KItQu5_PhUksXLQrUjhM",
+  apiKey: "<API KEY>",
   authDomain: "ossa-budget-cal.firebaseapp.com",
   databaseURL: "https://ossa-budget-cal.firebaseio.com",
   projectId: "ossa-budget-cal",
