@@ -18,11 +18,16 @@ class Header extends Component {
       <div style={header}>
         <div className="row">
           <div className="col-md-4 col-sm-6 col-xs-6">
-            <h1 style={headerText}>Budget Tracker</h1>
+            <h1 className="header-text" style={headerText}>Budget Tracker</h1>
           </div>
-          <div className="col-md-8 col-sm-6 col-xs-6 py-2">
-            <h4 className="text-right">
-              Hi! {this.props.userData}{" "} <button onClick={this.logout} className="btn btn-secondary" style={button}>
+          <div className="col-md-8 col-sm-6 col-xs-6 my-auto">
+            <h4 className="text-right my-auto username-text">
+              Hi! {this.props.userData}{" "}
+              <button
+                onClick={this.logout}
+                className="btn btn-secondary logout-btn"
+                style={button}
+              >
                 Logout
               </button>
             </h4>
@@ -40,7 +45,7 @@ const header = {
 };
 
 const headerText = {
-  margin: "0 0 0 10px"
+  margin: "0 10px 0 10px"
 };
 
 const button = {

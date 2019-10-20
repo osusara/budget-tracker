@@ -16,12 +16,13 @@ class AddEvent extends Component {
         ("0" + (today.getMonth() + 1)).slice(-2) +
         "/" +
         ("0" + today.getDate()).slice(-2) +
-        " | " +
+        " [" +
         ("0" + today.getHours()).slice(-2) +
         ":" +
         ("0" + today.getMinutes()).slice(-2) +
         ":" +
-        ("0" + today.getSeconds()).slice(-2);
+        ("0" + today.getSeconds()).slice(-2) +
+        "]";
 
     return date;
     };
@@ -60,37 +61,39 @@ class AddEvent extends Component {
             <div className="container">
               <form className="form mx-auto">
                 <div className="row text-center">
-                  <div className="col-md-6">
+                  <div className="col-md-6 col-sm-8 col-xs-8">
                     <input
-                      className="form-control"
+                      className="form-control add-event-input"
                       type="text"
                       name="title"
                       placeholder="Add a new event"
                       value={this.state.title}
                       onChange={this.onChange}
-                      style={input}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 col-sm-4 col-xs-4">
                     <input
-                      className="form-control"
+                      className="form-control add-event-input"
                       type="text"
                       name="amount"
                       placeholder="Add amount"
                       value={this.state.amount}
                       onChange={this.onChange}
-                      style={input}
                     />
                   </div>
-                  <div className="col-md-1">
-                    <button className="btn btn-success" name="in" style={btn} onClick={this.inEvent}>
-                      +
-                    </button>
-                  </div>
-                  <div className="col-md-1">
-                    <button className="btn btn-danger" name="out" style={btn} onClick={this.outEvent}>
-                      -
-                    </button>
+                  <div className="col-md-2 col-sm-5 col-xs-5">
+                    <div className="row">
+                      <div className="col-md-6 col-sm-6 col-xs-6">
+                        <button className="btn btn-success add-event-btn" name="in" onClick={this.inEvent}>
+                          +
+                        </button>
+                      </div>
+                      <div className="col-md-6 col-sm-6 col-xs-6">
+                        <button className="btn btn-danger add-event-btn" name="out" onClick={this.outEvent}>
+                          -
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -100,20 +103,9 @@ class AddEvent extends Component {
     }
 }
 
-const btn = {
-  width: "100%",
-  border: "none",
-  borderRadius: "100px"
-};
-
-const input = {
-  border: "none",
-  borderRadius: "100px",
-}
-
 const addEvent = {
   backgroundImage: "linear-gradient(to right, #434343 0%, #222 100%)",
-  padding: "20px"
+  padding: "20px 0"
 };
 
 export default AddEvent

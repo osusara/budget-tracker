@@ -10,11 +10,84 @@ body {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
+.add-event-input {
+  border: none;
+  border-radius: 100px;
+}
+
+.add-event-btn {
+  width: 100%;
+  border: none;
+  border-radius: 100px;
+}
+
+.clear-btn {
+  border: none;
+  border-radius: 100px;
+  background-image: linear-gradient(to right, #545454 0%, #444 100%);
+  width: 50%;
+}
+
+.clear-all-btn {
+  border: none;
+  border-radius: 100px;
+  background-image: linear-gradient(to right, #545454 0%, #444 100%);
+  width: 60%;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     font-size: 0.7rem;
   }
   h1 {
     font-size: 1.5rem;
+  }
+  .header-text {
+    text-align: center;
+    margin-bottom: 10px !important;
+  }
+  .username-text {
+    font-size: 1rem;
+    text-align: center !important;
+    margin-bottom: 10px;
+  }
+  .logout-btn {
+    font-size: 0.6rem;
+    width: 20%;
+  }
+  .add-event-input {
+    font-size: 0.8rem;
+    margin: 5px 0 5px 0;
+  }
+  .add-event-btn {
+    margin: 5px 0 5px 0;
+    height: 80%;
+    width: 90%;
+  }
+  .balance-card {
+    width: 80%;
+  }
+  .balance-card h1 {
+    font-size: 2.2rem;
+  }
+  .balance-card h3 {
+    font-size: 1.3rem;
+  }
+  .clear-btn {
+    font-size: 0.6rem;
+    width: 80%;
+  }
+  .clear-all-btn {
+    font-size: 0.6rem;
+    width: 100%;
+  }
+  .arrow {
+    height: 70%;
+  }
+  .arrow-column {
+    width: 10%;
+  }
+  .clear-column {
+    width: 20%;
   }
 }

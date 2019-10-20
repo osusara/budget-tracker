@@ -11,13 +11,12 @@ class EventItem extends Component {
         <td>{dateTime}</td>
         <td>{title}</td>
         <td>{Number(amount).toFixed(2)}</td>
-        <td>
-          {income ? <img src={up} alt="+" /> : <img src={down} alt="-" />}
+        <td className="arrow-column">
+          {income ? <img className="arrow" src={up} alt="+" /> : <img className="arrow" src={down} alt="-" />}
         </td>
-        <td className="text-center">
+        <td className="text-center clear-column">
           <button
-            className="btn btn-sm btn-dark"
-            style={btn}
+            className="btn btn-sm btn-dark clear-btn"
             onClick={this.props.removeEvent.bind(this, id)}
           >
             Clear
@@ -28,11 +27,5 @@ class EventItem extends Component {
   }
 }
 
-const btn = {
-  border: "none",
-  borderRadius: "100px",
-  backgroundImage: "linear-gradient(to right, #545454 0%, #444 100%)",
-  width: "50%",
-};
 
 export default EventItem;

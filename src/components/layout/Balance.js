@@ -6,7 +6,7 @@ class Balance extends Component {
       <div style={balance} className="container-fluid text-center mx-auto">
         <div className="row">
           <div className="col-md-4 mx-auto">
-            <div className="card" style={card}>
+            <div className="card mx-auto balance-card" style={card}>
               <h3 className="card-title">Balance Left</h3>
               <h1 className="display-4">{Number(this.props.total).toFixed(2)}</h1>
             </div>

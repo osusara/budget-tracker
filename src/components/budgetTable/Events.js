@@ -11,12 +11,12 @@ class Events extends Component {
             <table style={table} className="table mx-auto">
               <tbody>
                 <tr>
-                  <th>Date | Time</th>
+                  <th>Date [Time]</th>
                   <th>Event</th>
                   <th>Amount</th>
-                  <th></th>
-                  <th className="text-center">
-                    <button onClick={this.props.clearAll} className="btn btn-sm btn-dark" style={btn}>
+                  <th className="arrow-column"></th>
+                  <th className="text-center clear-column">
+                    <button onClick={this.props.clearAll} className="btn btn-sm btn-dark clear-all-btn">
                       Clear All
                     </button>
                   </th>
@@ -39,12 +39,5 @@ const table = {
     width: '90%',
     margin: '10px 0',
 }
-
-const btn = {
-  border: "none",
-  borderRadius: "100px",
-  backgroundImage: "linear-gradient(to right, #545454 0%, #444 100%)",
-  width: "60%"
-};
 
 export default Events
