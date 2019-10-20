@@ -82,11 +82,6 @@ body {
   }
   .arrow {
     height: 70%;
-  }
-  .arrow-column {
-    width: 10%;
-  }
-  .clear-column {
-    width: 20%;
+    width: auto;
   }
 }
