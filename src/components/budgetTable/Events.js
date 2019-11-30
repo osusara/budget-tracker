@@ -7,7 +7,7 @@ class Events extends Component {
     render() {
 
         return (
-          <div className="container">
+          <div style={container} className="container">
             <table style={table} className="table mx-auto">
               <tbody>
                 <tr>
@@ -33,6 +33,10 @@ class Events extends Component {
           </div>
         );
     }
+}
+
+const container = {
+  width: "100%",
 }
 
 const table = {

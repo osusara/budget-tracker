@@ -8,6 +8,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  width: 100%;
 }
 
 .add-event-input {
@@ -81,6 +82,7 @@ body {
     width: 100%;
   }
   .arrow {
+    margin: 2px 0 0 0;
     height: 15px;
     width: auto;
   }

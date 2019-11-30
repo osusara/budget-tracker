@@ -42,6 +42,7 @@ const header = {
   backgroundImage: "linear-gradient(to right, #323232 0%, #111 100%)",
   color: "#FFF",
   padding: "10px",
+  width: "100%",
 };
 
 const headerText = {
