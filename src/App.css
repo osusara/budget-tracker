@@ -11,37 +11,60 @@ body {
   width: 100%;
 }
 
+.card {
+  border-radius: 0.5rem !important;
+  border: none !important;
+}
+
+.btn {
+  border: none !important;
+  border-radius: 0.5rem !important;
+}
+
+.add-event-card {
+  border-radius: 0.5rem !important;
+  border: none !important;
+}
+
+.add-event-container {
+  background-image: linear-gradient(to right, #434343 0%, #222 100%);
+}
+
 .add-event-input {
-  border: none;
-  border-radius: 100px;
+  border-radius: 0.5rem !important;
 }
 
 .add-event-btn {
-  width: 100%;
-  border: none;
-  border-radius: 100px;
+  width: 30%;
+}
+
+.sub-event-btn {
+  width: 30%;
 }
 
 .clear-btn {
   border: none;
   border-radius: 100px;
   background-image: linear-gradient(to right, #545454 0%, #444 100%);
-  width: 50%;
 }
 
 .clear-all-btn {
   border: none;
   border-radius: 100px;
   background-image: linear-gradient(to right, #545454 0%, #444 100%);
-  width: 60%;
+}
+
+.logout-btn {
+  border: none !important;
+  border-radius: 0.5rem !important;
 }
 
 @media only screen and (max-width: 768px) {
   body {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
   .header-text {
     text-align: center;
@@ -51,10 +74,6 @@ body {
     font-size: 1rem;
     text-align: center !important;
     margin-bottom: 10px;
-  }
-  .logout-btn {
-    font-size: 0.6rem;
-    width: 20%;
   }
   .add-event-input {
     font-size: 0.8rem;
@@ -78,7 +97,7 @@ body {
     width: 80%;
   }
   .clear-all-btn {
-    font-size: 0.6rem;
+    font-size: 0.7rem !important;
     width: 100%;
   }
   .arrow {

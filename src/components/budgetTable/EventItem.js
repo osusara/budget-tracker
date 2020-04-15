@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import down from "../../assets/down.png";
 import up from "../../assets/up.png";
 
@@ -15,12 +16,14 @@ class EventItem extends Component {
           {income ? <img className="arrow" src={up} alt="+" /> : <img className="arrow" src={down} alt="-" />}
         </td>
         <td className="text-center clear-column">
-          <button
-            className="btn btn-sm btn-dark clear-btn"
+          <Button
+            className="clear-btn"
             onClick={this.props.removeEvent.bind(this, id)}
           >
-            Clear
-          </button>
+            {" "}
+            <i className="fas fa-trash"></i>
+            {" "}
+          </Button>
         </td>
       </tr>
     );

@@ -1,58 +1,40 @@
 import React, { Component } from "react";
+import { Navbar, Nav } from "react-bootstrap";
 import firebaseApp from "../../firebase";
 
 class Header extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.logout = this.logout.bind(this);
   }
 
   logout = () => {
-    firebaseApp.auth().signOut()
-  }
+    firebaseApp.auth().signOut();
+  };
 
   render() {
     return (
-      <div style={header}>
-        <div className="row">
-          <div className="col-md-4 col-sm-6 col-xs-6">
-            <h1 className="header-text" style={headerText}>Budget Tracker</h1>
-          </div>
-          <div className="col-md-8 col-sm-6 col-xs-6 my-auto">
-            <h4 className="text-right my-auto username-text">
-              Hi! {this.props.userData}{" "}
-              <button
-                onClick={this.logout}
-                className="btn btn-secondary logout-btn"
-                style={button}
-              >
-                Logout
-              </button>
-            </h4>
-          </div>
-        </div>
-      </div>
+      <Navbar bg="light" expand="lg" className="shadow-sm">
+        <Navbar.Brand>Budget Tracker</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          <Navbar.Text className="mr-sm-2">
+            Hi! {this.props.userData}
+          </Navbar.Text>
+          <Nav>
+            <Nav.Link
+              onClick={this.logout}
+              className="btn btn-secondary text-light logout-btn"
+            >
+              {" "}Logout{" "}
+              <i className="fas fa-sign-out-alt"></i>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
-
-const header = {
-  backgroundImage: "linear-gradient(to right, #323232 0%, #111 100%)",
-  color: "#FFF",
-  padding: "10px",
-  width: "100%",
-};
-
-const headerText = {
-  margin: "0 10px 0 10px"
-};
-
-const button = {
-  backgroundImage: "linear-gradient(to right, #545454 0%, #333 100%)",
-  border: "none",
-  borderRadius: "100px"
-};
 
 export default Header;

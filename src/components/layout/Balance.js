@@ -1,35 +1,25 @@
 import React, { Component } from "react";
+import { Container, Card, Row, Col } from "react-bootstrap"
 
 class Balance extends Component {
   render() {
     return (
-      <div style={balance} className="container-fluid text-center mx-auto">
-        <div className="row">
-          <div className="col-md-4 mx-auto">
-            <div className="card mx-auto balance-card" style={card}>
-              <h3 className="card-title">Balance Left</h3>
-              <h1 className="display-4">{Number(this.props.total).toFixed(2)}</h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Container className="text-center mx-auto py-2">
+        <Row>
+          <Col md={4} className="mx-auto">
+            <Card className="card mx-auto shadow-sm balance-card">
+              <Card.Body>
+                <Card.Title>Balance Left</Card.Title>
+                <h1>
+                  {Number(this.props.total).toFixed(2)}
+                </h1>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
-
-const balance = {
-  background: "linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898", 
-  backgroundBlendMode: "multiply,multiply",
-  width: "100%"
-};
-
-const card = {
-  margin: "10px 0",
-  padding: "20px 0 10px 0",
-  backgroundImage: "linear-gradient(to right, #434343 0%, #222 100%)",
-  color: "#FFF",
-  border: "none",
-  borderRadius: "20px"
-};
 
 export default Balance

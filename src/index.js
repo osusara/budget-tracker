@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./components/userManagement/Login";
 import SignUp from "./components/userManagement/SignUp"
@@ -42,7 +42,7 @@ class Root extends Component{
   }
 
   isSignUp = (status) => {
-    this.setState({ isSignUp: status })
+    this.setState({ isSignUp: status });
   }
 
   render() {
@@ -69,4 +69,3 @@ class Root extends Component{
 export default Root
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-serviceWorker.unregister();

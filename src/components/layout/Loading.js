@@ -1,21 +1,17 @@
 import React from 'react'
-import loading from'../../assets/loading.svg'
+import { Spinner, Container, Row, Col } from "react-bootstrap"
 
 const Loading = () => (
-  <div style={loadingScreen} className="container mx-auto">
-    <div className="row">
-      <div className="col-md-4 mx-auto">
+  <Container className="mx-auto py-2 px-2">
+    <Row>
+      <Col md={4} className="mx-auto">
         <div className="text-center">
-          <img src={loading} alt="Loading..." />
+          <Spinner animation="border" variant="dark" />
         </div>
-        <h2 className="text-center">Please wait</h2>
-      </div>
-    </div>
-  </div>
+        <h4 className="text-center">Please wait</h4>
+      </Col>
+    </Row>
+  </Container>
 );
-
-const loadingScreen = {
-    margin: "5%"
-}
 
 export default Loading
