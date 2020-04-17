@@ -67,11 +67,11 @@ class SignUp extends Component {
     return (
       <div className="container py-5 my-5">
         <div className="col-md-5 col-sm-8 col-xs-11 mx-auto my-5 py-5 text-center">
-          <div className="card shadow py-3 px-2" style={loginCard}>
-            <h3 className="card-title py-2" style={headerText}>
-              Create Account
-            </h3>
+          <div className="card shadow-sm py-3 px-2" style={loginCard}>
             <div className="card-body">
+              <h3 className="card-title py-2" style={headerText}>
+                Create Account
+              </h3>
               {this.state.errors ? <Error message={this.state.errors} /> : null}
               <form>
                 <div className="form-group">
@@ -132,20 +132,20 @@ class SignUp extends Component {
 }
 
 const loginCard = {
-  backgroundImage: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-  color: "#444",
+  backgroundColor: "#5068a9",
+  color: "#f8f8f8",
   border: "none",
   borderRadius: "15px",
   boxShadow: "1px 2px 5px #DDD",
 };
 
 const headerText = {
-  color: "#555",
+  color: "#f8f8f8",
 };
 
 const input = {
   border: "none",
-  borderRadius: "100px",
+  borderRadius: "0.5rem",
   width: "90%",
   margin: "auto",
 };
@@ -155,16 +155,14 @@ const divider = {
 }
 
 const button = {
-  backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-  border: "none",
-  borderRadius: "100px",
+  backgroundColor: "#86a6df",
   width: "45%",
   margin: "2% 0 4% 0",
 };
 
 const link = {
-  color: "#764ba2",
-  cursor: "pointer"
+  color: "#86a6df",
+  cursor: "pointer",
 };
 
 export default SignUp

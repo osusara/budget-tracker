@@ -5,9 +5,8 @@
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-color: #f8f8f8;
   width: 100%;
 }
 
@@ -21,9 +20,28 @@ body {
   border-radius: 0.5rem !important;
 }
 
+.table {
+  width: 100%;
+}
+
+.header {
+  background-color: #5068a9;
+  color: #f8f8f8 !important;
+}
+
+.header-txt {
+  color: #f8f8f8 !important;
+}
+
+.toggle-button {
+  border: none !important;
+  background-image: #f8f8f8 !important;
+}
+
 .add-event-card {
   border-radius: 0.5rem !important;
   border: none !important;
+  background-color: #86a6df !important;
 }
 
 .add-event-container {
@@ -31,32 +49,64 @@ body {
 }
 
 .add-event-input {
+  border: none !important;
   border-radius: 0.5rem !important;
 }
 
 .add-event-btn {
+  color: #2cb978 !important;
   width: 30%;
 }
 
 .sub-event-btn {
+  color: #ea5455 !important;
   width: 30%;
+}
+
+.balance-container {
+  background-color: #5068a9 !important;
+}
+
+.balance-main-card {
+  background-color: #86a6df !important;
+  color: #f8f8f8 !important;
 }
 
 .clear-btn {
   border: none;
   border-radius: 100px;
-  background-image: linear-gradient(to right, #545454 0%, #444 100%);
+  color: #5068a9 !important;
 }
 
 .clear-all-btn {
   border: none;
   border-radius: 100px;
-  background-image: linear-gradient(to right, #545454 0%, #444 100%);
+  background-color: #5068a9 !important;
+}
+
+.arrow {
+  height: 0.8rem;
+  width: auto;
+}
+
+.footer-container {
+  background-color: #5068a9;
+  color: #f8f8f8 !important;
+}
+
+.btn-footer {
+  border: none !important;
+  border-radius: 0.5rem !important;
+  background-color: #86a6df !important;
 }
 
 .logout-btn {
   border: none !important;
   border-radius: 0.5rem !important;
+  background-color: #86a6df !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -89,11 +139,11 @@ body {
   .balance-card h1 {
     font-size: 2.2rem;
   }
-  .balance-card h3 {
+  .balance-card h2 {
     font-size: 1.3rem;
   }
   .clear-btn {
-    font-size: 0.6rem;
+    font-size: 0.7rem !important;
     width: 80%;
   }
   .clear-all-btn {
@@ -101,8 +151,14 @@ body {
     width: 100%;
   }
   .arrow {
-    margin: 2px 0 0 0;
-    height: 15px;
+    height: 0.7rem;
     width: auto;
+  }
+  .logout-btn {
+    font-size: 0.7rem !important;
+    width: 30%;
+  }
+  .btn-footer {
+    font-size: 0.7rem !important;
   }
 }

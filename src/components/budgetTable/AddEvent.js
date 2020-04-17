@@ -94,14 +94,14 @@ class AddEvent extends Component {
                 </Col>
                 <Col md={2} xs={8} className="mx-auto my-auto">
                   <Button
-                    className="btn-success add-event-btn mx-2"
+                    className="btn-light add-event-btn mx-2"
                     name="in"
                     onClick={this.inEvent}
                   >
                     <i className="fas fa-plus"></i>
                   </Button>
                   <Button
-                    className="btn-danger sub-event-btn mx-2"
+                    className="btn-light sub-event-btn mx-2"
                     name="out"
                     onClick={this.outEvent}
                   >

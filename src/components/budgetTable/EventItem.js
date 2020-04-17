@@ -9,20 +9,33 @@ class EventItem extends Component {
 
     return (
       <tr>
-        <td>{dateTime}</td>
-        <td>{title}</td>
-        <td>{Number(amount).toFixed(2)}</td>
-        <td className="arrow-column">
-          {income ? <img className="arrow" src={up} alt="+" /> : <img className="arrow" src={down} alt="-" />}
+        <td style={{ width: "20% !important" }} className="align-middle">
+          {dateTime}
         </td>
-        <td className="text-center clear-column">
+        <td style={{ width: "40% !important" }} className="align-middle">
+          {title}
+        </td>
+        <td style={{ width: "20% !important" }} className="align-middle">
+          {Number(amount).toFixed(2)}
+        </td>
+        <td style={{ width: "10% !important" }} className="align-middle">
+          {income ? (
+            <img className="arrow" src={up} alt="+" />
+          ) : (
+            <img className="arrow" src={down} alt="-" />
+          )}
+        </td>
+        <td
+          style={{ width: "10% !important" }}
+          className="text-center clear-column"
+        >
           <Button
+            variant="link"
             className="clear-btn"
             onClick={this.props.removeEvent.bind(this, id)}
           >
             {" "}
-            <i className="fas fa-trash"></i>
-            {" "}
+            <i className="fas fa-trash"></i>{" "}
           </Button>
         </td>
       </tr>

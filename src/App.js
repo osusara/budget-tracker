@@ -8,6 +8,7 @@ import Events from './components/budgetTable/Events'
 import AddEvent from "./components/budgetTable/AddEvent"
 import Balance from "./components/layout/Balance"
 import Loading from './components/layout/Loading'
+import Footer from './components/layout/Footer'
 
 class App extends Component {
 
@@ -16,6 +17,8 @@ class App extends Component {
     userData: "",
     events: [],
     total: 0,
+    income:0,
+    expenses:0,
     isLoading: false
   };
 
@@ -61,19 +64,24 @@ class App extends Component {
 
   getTotal = () => {
     this.setState({ total: 0 });
+
     let total = 0;
+    let income = 0;
+    let expenses = 0;
     this.state.events.forEach(event => {
       if (event.income) {
         total += Number(event.amount);
+        income += Number(event.amount);
         //this.setState({ total: (this.state.total += Number(event.amount)) });
       } else {
         total -= Number(event.amount);
+        expenses += Number(event.amount);
         //this.setState({ total: (this.state.total -= Number(event.amount)) });
       }
     });
 
     //console.log(total)
-    this.setState({ total: total, isLoading: false });
+    this.setState({ total, income, expenses, isLoading: false });
   };
 
   addEvent = (dateTime, title, amount, income) => {
@@ -175,10 +183,20 @@ class App extends Component {
           <Loading />
         ) : (
           <div>
-            <Balance total={this.state.total} />
-            <Events events={this.state.events} removeEvent={this.removeEvent} clearAll={this.clearAll} />
+            <Balance
+              total={this.state.total}
+              income={this.state.income}
+              expenses={this.state.expenses}
+            />
+            <Events
+              events={this.state.events}
+              removeEvent={this.removeEvent}
+              clearAll={this.clearAll}
+            />
           </div>
         )}
+
+        <Footer />
       </div>
     );
   }

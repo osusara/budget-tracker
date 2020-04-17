@@ -15,20 +15,23 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar bg="light" expand="lg" className="shadow-sm">
-        <Navbar.Brand>Budget Tracker</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar variant="dark" expand="lg" className="header nav-dark shadow-sm">
+        <Navbar.Brand className="header-txt">Budget Tracker</Navbar.Brand>
+        <Navbar.Toggle
+          className="toggle-button"
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Navbar.Text className="mr-sm-2">
+          <Navbar.Text className="header-txt mr-sm-2">
             Hi! {this.props.userData}
           </Navbar.Text>
           <Nav>
             <Nav.Link
               onClick={this.logout}
-              className="btn btn-secondary text-light logout-btn"
+              className="btn-sm btn-secondary text-center text-light logout-btn"
             >
-              {" "}Logout{" "}
-              <i className="fas fa-sign-out-alt"></i>
+              {" "}
+              Logout <i className="fas fa-sign-out-alt"></i>{" "}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

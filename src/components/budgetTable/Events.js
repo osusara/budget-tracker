@@ -6,14 +6,20 @@ class Events extends Component {
   render() {
     return (
       <Container className="mt-2 pt-4">
-        <Table responsive className="table mx-auto shadow-sm">
+        <Table responsive className="mx-auto shadow-sm">
           <thead>
             <tr>
-              <th>Date [Time]</th>
-              <th>Event</th>
-              <th>Amount</th>
-              <th className="arrow-column"></th>
-              <th className="text-center clear-column">
+              <th style={{ width: "20% !important" }}>Date [Time]</th>
+              <th style={{ width: "40% !important" }}>Event</th>
+              <th style={{ width: "20% !important" }}>Amount</th>
+              <th
+                style={{ width: "10% !important" }}
+                className="arrow-column"
+              ></th>
+              <th
+                style={{ width: "10% !important" }}
+                className="text-center clear-column"
+              >
                 <Button
                   onClick={this.props.clearAll}
                   className="btn-dark clear-all-btn"
@@ -37,14 +43,5 @@ class Events extends Component {
     );
   }
 }
-
-const container = {
-  width: "100%",
-};
-
-const table = {
-  width: "90%",
-  margin: "10px 0",
-};
 
 export default Events;
