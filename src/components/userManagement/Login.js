@@ -15,7 +15,6 @@ class Login extends Component {
       email: "",
       password: "",
       errors: "",
-      // isSignUp: true
     };
   }
 

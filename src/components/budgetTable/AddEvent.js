@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 
+import Error from "../warnings/Error";
+
 class AddEvent extends Component {
   state = {
     title: "",
     amount: "",
     income: false,
+    error: ""
   };
 
   getCurrentDateTime = () => {
@@ -28,6 +31,19 @@ class AddEvent extends Component {
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  onAmountChange = (e) => {
+    if(isNaN(e.target.value)){
+      this.setState({
+        amount: "",
+        errors: "Enter only numbers in Amount field",
+      });
+    } else {
+      this.setState({
+        amount: e.target.value,
+        errors: "",
+      });
+    }
+  }
 
   inEvent = (e) => {
     e.preventDefault();
@@ -70,6 +86,7 @@ class AddEvent extends Component {
       <Container>
         <Card className="add-event-card shadow-sm my-4">
           <Card.Body>
+            {this.state.errors ? <Error message={this.state.errors} /> : null}
             <Form>
               <Row className="text-center">
                 <Col md={6} xs={12} className="mx-auto my-auto">
@@ -86,10 +103,11 @@ class AddEvent extends Component {
                   <Form.Control
                     className="add-event-input"
                     type="text"
+                    pattern="[0-9]*"
                     name="amount"
                     placeholder="Add amount"
                     value={this.state.amount}
-                    onChange={this.onChange}
+                    onChange={this.onAmountChange}
                   />
                 </Col>
                 <Col md={2} xs={8} className="mx-auto my-auto">

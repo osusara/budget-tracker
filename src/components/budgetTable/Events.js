@@ -5,7 +5,7 @@ import EventItem from "./EventItem";
 class Events extends Component {
   render() {
     return (
-      <Container className="mt-2 pt-4">
+      <Container responsive className="mt-2 pt-4">
         <Table responsive className="mx-auto shadow-sm">
           <thead>
             <tr>
